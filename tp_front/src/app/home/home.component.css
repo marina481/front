@@ -1,0 +1,52 @@
+/* Fondo general */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título */
+  h1 {
+    color: #004d66; /* Azul oscuro */
+    font-weight: bold;
+  }
+  
+  /* Barra de navegación */
+  .nav-link {
+    color: #004d66 !important;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #ffe4c4; /* Color arena */
+    color: #004d66 !important;
+  }
+  
+  .nav-link.active {
+    background-color: #ffe4c4;
+    color: #004d66 !important;
+    font-weight: bold;
+  }
+  
+  /* Mensaje de bienvenida */
+  .lead {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Imagen de mapa */
+  .img-fluid {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+ 
+  
+  .btn-primary:hover {
+    background-color: #00334d;
+    border-color: #00334d;
+  }
+  
