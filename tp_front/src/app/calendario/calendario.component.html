@@ -1,1 +1,34 @@
-<p>calendario works!</p>
+<div class="container text-center my-4">
+
+<!-- Título del hotel -->    
+<h1 class="display-4 mb-3">Hotel Back & Front</h1>
+
+<!-- Barra de navegación// Con la propiedad page se cambia el nav link active -->
+<app-navbar [page]="'calendario'"></app-navbar>
+
+<!-- Barra de navegación de Fechas -->
+<div>
+    <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(-1)">&lt;</button>
+    <input type="date" [(ngModel)]="currentDate" [max]="maxDate" [min]="minDate" class="date-display">
+    <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(1)">&gt;</button>
+</div>
+
+<!-- Disponibilidad de habitaciones//Todavia disfuncionales, solo les di color-->
+<div class="rooms-grid">
+    <input class="room" value="101" disabled>
+    <input class="room occupied" value="102" disabled>
+    <input class="room" value="103" disabled>
+    <input class="room occupied" value="104" disabled>
+    <input class="room" value="105" disabled>
+    <input class="room" value="201" disabled>
+    <input class="room occupied" value="202" disabled>
+    <input class="room" value="203" disabled>
+    <input class="room occupied" value="204" disabled>
+    <input class="room" value="205" disabled>
+    <input class="room" value="301" disabled>
+    <input class="room occupied" value="302" disabled>
+    <input class="room" value="303" disabled>
+    <input class="room occupied" value="304" disabled>
+    <input class="room" value="305" disabled>
+</div>
+</div>

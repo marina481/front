@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 
 @Component({
@@ -9,5 +9,5 @@ import { NavbarComponent } from '../shared/components/navbar/navbar.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+    
 }
