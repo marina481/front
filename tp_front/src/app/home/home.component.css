@@ -1,52 +1,70 @@
 /* Fondo general */
 .container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Título */
-  h1 {
-    color: #004d66; /* Azul oscuro */
-    font-weight: bold;
-  }
-  
-  /* Barra de navegación */
-  .nav-link {
-    color: #004d66 !important;
-    font-weight: 500;
-    transition: background-color 0.3s;
-  }
-  
-  .nav-link:hover {
-    background-color: #ffe4c4; /* Color arena */
-    color: #004d66 !important;
-  }
-  
-  .nav-link.active {
-    background-color: #ffe4c4;
-    color: #004d66 !important;
-    font-weight: bold;
-  }
-  
-  /* Mensaje de bienvenida */
-  .lead {
-    font-size: 1.2rem;
-    color: #666;
-    font-style: italic;
-  }
-  
-  /* Imagen de mapa */
-  .img-fluid {
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
- 
-  
-  .btn-primary:hover {
-    background-color: #00334d;
-    border-color: #00334d;
-  }
-  
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+  color: #004d66; /* Azul oscuro */
+  font-weight: bold;
+}
+
+/* Barra de navegación */
+.nav-link {
+  color: #004d66 !important;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #ffe4c4; /* Color arena */
+  color: #004d66 !important;
+}
+
+.nav-link.active {
+  background-color: #ffe4c4;
+  color: #004d66 !important;
+  font-weight: bold;
+}
+
+/* Mensaje de bienvenida */
+.lead {
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between; 
+  align-items: stretch; 
+}
+
+/* Estilos para cada columna */
+.col-md-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  height: 250px; 
+}
+
+/* Estilos para las imágenes */
+.img-fluid {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  margin-top: 15px;
+}
+
+/* Botón de estilo */
+.btn-primary:hover {
+  background-color: #00334d;
+  border-color: #00334d;
+}
