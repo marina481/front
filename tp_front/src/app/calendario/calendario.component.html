@@ -13,22 +13,10 @@
     <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(1)">&gt;</button>
 </div>
 
-<!-- Disponibilidad de habitaciones//Todavia disfuncionales, solo les di color-->
+<!-- Disponibilidad de habitaciones -->
 <div class="rooms-grid">
-    <input class="room" value="101" disabled>
-    <input class="room occupied" value="102" disabled>
-    <input class="room" value="103" disabled>
-    <input class="room occupied" value="104" disabled>
-    <input class="room" value="105" disabled>
-    <input class="room" value="201" disabled>
-    <input class="room occupied" value="202" disabled>
-    <input class="room" value="203" disabled>
-    <input class="room occupied" value="204" disabled>
-    <input class="room" value="205" disabled>
-    <input class="room" value="301" disabled>
-    <input class="room occupied" value="302" disabled>
-    <input class="room" value="303" disabled>
-    <input class="room occupied" value="304" disabled>
-    <input class="room" value="305" disabled>
-</div>
+    <div *ngFor="let roomNumber of habitaciones"
+         [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
+         {{ roomNumber }}
+    </div>
 </div>
