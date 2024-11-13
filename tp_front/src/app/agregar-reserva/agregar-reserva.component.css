@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+#form-reserva {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 40% 60%;
+    grid-template-areas:
+    'label-nombre input-nombre'
+    'label-telefono input-telefono'
+    'label-email input-email'
+    'label-habitacion input-habitacion'
+    'label-fecha_inicio input-fecha_inicio'
+    'label-fecha_fin input-fecha_fin';
+}
+
+#form-reserva label {
+    text-align: right;
+    margin: 0.5em 1em;
+}
+
+#form-reserva input {
+    margin: 0.5em 0;
+    height: 2em;
+}
+
+#label-nombre {
+    grid-area: label-nombre;
+}
+
+#input-nombre {
+    grid-area: input-nombre;
+}
+
+#label-telefono {
+    grid-area: label-telefono;
+}
+
+#input-telefono {
+    grid-area: input-telefono;
+}
+
+#label-email {
+    grid-area: label-email;
+}
+
+#input-email {
+    grid-area: input-email;
+}
+
+#label-habitacion {
+    grid-area: label-habitacion;
+}
+
+#input-habitacion {
+    grid-area: input-habitacion;
+}
+
+#label-fecha_inicio {
+    grid-area: label-fecha_inicio;
+}
+
+#input-fecha_inicio {
+    grid-area: input-fecha_inicio;
+}
+
+#label-fecha_fin {
+    grid-area: label-fecha_fin;
+}
+
+#input-fecha_fin {
+    grid-area: input-fecha_fin;
+}
+
+#form-buttons {
+    display: flex;
+}
+
+#form-buttons input {
+    margin: 1em auto;
+    width: 300px;
+    height: 2em;
+    font-size: 1.5em;
+}
