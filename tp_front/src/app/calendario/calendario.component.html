@@ -13,10 +13,11 @@
     <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(1)">&gt;</button>
 </div>
 
-<!-- Disponibilidad de habitaciones -->
-<div class="rooms-grid">
-    <div *ngFor="let roomNumber of habitaciones"
-         [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
-         {{ roomNumber }}
-    </div>
+<!-- Disponibilidad de habitaciones-->
+  <div class="rooms-grid">
+       <div *ngFor="let roomNumber of habitaciones"
+          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
+          {{ roomNumber }}
+       </div>
+   </div>
 </div>
