@@ -5,11 +5,17 @@
     grid-template-columns: 40% 60%;
     grid-template-areas:
     'label-nombre input-nombre'
+    '. error-nombre'
     'label-telefono input-telefono'
+    '. error-telefono'
     'label-email input-email'
+    '. error-email'
     'label-habitacion input-habitacion'
+    '. error-habitacion'
     'label-fecha_inicio input-fecha_inicio'
-    'label-fecha_fin input-fecha_fin';
+    '. error-fecha_inicio'
+    'label-fecha_fin input-fecha_fin'
+    '. error-fecha_fin';
 }
 
 #form-reserva label {
@@ -30,12 +36,20 @@
     grid-area: input-nombre;
 }
 
+#error-nombre {
+    grid-area: error-nombre;
+}
+
 #label-telefono {
     grid-area: label-telefono;
 }
 
 #input-telefono {
     grid-area: input-telefono;
+}
+
+#error-telefono {
+    grid-area: error-telefono;
 }
 
 #label-email {
@@ -46,12 +60,20 @@
     grid-area: input-email;
 }
 
+#error-email {
+    grid-area: error-email;
+}
+
 #label-habitacion {
     grid-area: label-habitacion;
 }
 
 #input-habitacion {
     grid-area: input-habitacion;
+}
+
+#error-habitacion {
+    grid-area: error-habitacion;
 }
 
 #label-fecha_inicio {
@@ -62,12 +84,20 @@
     grid-area: input-fecha_inicio;
 }
 
+#error-fecha_inicio {
+    grid-area: error-fecha_inicio;
+}
+
 #label-fecha_fin {
     grid-area: label-fecha_fin;
 }
 
 #input-fecha_fin {
     grid-area: input-fecha_fin;
+}
+
+#error-fecha_fin {
+    grid-area: error-fecha_fin;
 }
 
 #form-buttons {
@@ -79,4 +109,10 @@
     width: 300px;
     height: 2em;
     font-size: 1.5em;
+}
+
+.validators {
+    color: red;
+    font-size: 0.8em;
+    margin-bottom: 0;
 }

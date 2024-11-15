@@ -15,4 +15,8 @@ export class ApiService {
   public getReservas():Observable<Reserva[]> {
     return this._http.get<Reserva[]>(this.apiURL)
   }
+
+  public agregarReserva(reserva: Reserva): Observable <Reserva> {
+    return this._http.post<Reserva>(this.apiURL, reserva);
+  }
 }

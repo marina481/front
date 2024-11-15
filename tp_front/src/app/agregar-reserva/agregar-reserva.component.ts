@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Reserva } from '../models/reserva.model';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-reserva',
@@ -19,12 +22,22 @@ export class AgregarReservaComponent {
     fecha_fin: new FormControl('', [Validators.required])
   })
 
+  constructor (private _backservice: ApiService, private _router: Router) {}
+
+  // Vuelve al calendario
   volver () {
-    // TODO
+    this._router.navigate(['/Calendario']);
   }
 
+  // Envía la reserva a la base de datos y vuelve al calendario
   enviarReserva () {
-    // TODO
+    if (this.reservaForm.valid) {
+      const nuevaReserva = this.reservaForm.value as Reserva;
+      console.log("Reserva: ")
+      console.log(nuevaReserva);
+      this._backservice.agregarReserva(nuevaReserva).subscribe((response) => {
+        console.log(response)
+      })
+    }
   }
-
 }
