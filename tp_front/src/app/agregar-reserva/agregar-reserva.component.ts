@@ -35,8 +35,14 @@ export class AgregarReservaComponent {
       const nuevaReserva = this.reservaForm.value as Reserva;
       console.log("Reserva: ")
       console.log(nuevaReserva);
-      this._backservice.agregarReserva(nuevaReserva).subscribe((response) => {
-        console.log(response)
+      this._backservice.agregarReserva(nuevaReserva).subscribe({
+        next: (res) => {
+          console.log('Reserva creada correctamente', res);
+          window.alert("La reserva fue agregada correctamente.");
+          this.volver();
+        }, error: (error) => {
+          console.error('Error al crear la reserva', error)
+        }
       })
     }
   }

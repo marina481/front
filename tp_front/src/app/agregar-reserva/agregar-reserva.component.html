@@ -1,10 +1,10 @@
-<form>
+<form [formGroup]="reservaForm">
     <div id="form-reserva">
 
         <label id="label-nombre" for="input-nombre">Nombre:</label>
         <input
         id="input-nombre"
-        [formControl]="reservaForm.controls.nombre"
+        formControlName="nombre"
         type="text"
         label="Nombre">
 
@@ -15,7 +15,7 @@
         <label id="label-telefono" for="input-telefono">Teléfono:</label>
         <input
         id="input-telefono"
-        [formControl]="reservaForm.controls.telefono"
+        formControlName="telefono"
         type="number"
         min="0"
         step="1"
@@ -28,7 +28,7 @@
         <label id="label-email" for="input-email">Email:</label>
         <input
         id="input-email"
-        [formControl]="reservaForm.controls.email"
+        formControlName="email"
         type="email"
         label="Email">
 
@@ -39,7 +39,7 @@
         <label id="label-habitacion" for="input-habitacion">Habitación:</label>
         <input
         id="input-habitacion"
-        [formControl]="reservaForm.controls.habitacion"
+        formControlName="habitacion"
         type="number"
         min="0"
         step="1"
@@ -52,7 +52,7 @@
         <label id="label-fecha_inicio" for="input-fecha_inicio">Fecha de inicio:</label>
         <input
         id="input-fecha_inicio"
-        [formControl]="reservaForm.controls.fecha_inicio"
+        formControlName="fecha_inicio"
         type="date"
         label="Fecha de inicio">
 
@@ -63,7 +63,7 @@
         <label id="label-fecha_fin" for="input-fecha_fin">Fecha de fin:</label>
         <input
         id="input-fecha_fin"
-        [formControl]="reservaForm.controls.fecha_fin"
+        formControlName="fecha_fin"
         type="date"
         label="Fecha de fin">
 
