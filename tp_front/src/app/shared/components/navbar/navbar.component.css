@@ -1,0 +1,17 @@
+  /* Barra de navegación */
+  .nav-link {
+    color: #004d66 !important;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #ffe4c4; /* Color arena */
+    color: #004d66 !important;
+  }
+  
+  .nav-link.active {
+    background-color: #ffe4c4;
+    color: #004d66 !important;
+    font-weight: bold;
+  }
