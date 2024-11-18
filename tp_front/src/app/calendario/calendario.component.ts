@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { Reserva } from '../models/reserva.model';
 import { ApiService } from '../services/api.service';
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [NavbarComponent,FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.css'
 })

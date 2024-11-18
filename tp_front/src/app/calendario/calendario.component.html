@@ -1,20 +1,16 @@
-<div class="container text-center my-4">
-  <!-- Barra de navegación// Con la propiedad page se cambia el nav link active -->
-  <app-navbar [page]="'calendario'"></app-navbar>
 
-  <!-- Barra de navegación de Fechas -->
-  <div>
-     <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(-1)">&lt;</button>
-     <input type="date" [(ngModel)]="currentDate" [max]="maxDate" [min]="minDate" class="date-display">
-     <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(1)">&gt;</button>
- </div>
+<!-- Barra de navegación de Fechas -->
+<div>
+    <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(-1)">&lt;</button>
+    <input type="date" [(ngModel)]="currentDate" [max]="maxDate" [min]="minDate" class="date-display">
+    <button type="button" class="btn btn-outline-primary" id="btn-next" (click)="changeDate(1)">&gt;</button>
+</div>
 
- <h2>Habitaciones</h2>
- <!-- Disponibilidad de habitaciones-->
-  <div class="rooms-grid">
-       <div *ngFor="let roomNumber of habitaciones"
-          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}" (click)="roomLink(roomNumber)">
-          {{ roomNumber }}
-       </div>
-   </div>
+<!-- Disponibilidad de habitaciones-->
+<div class="rooms-grid">
+    <div *ngFor="let roomNumber of habitaciones"
+        [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
+        {{ roomNumber }}
+    </div>
+
 </div>

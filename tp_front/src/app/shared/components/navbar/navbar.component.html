@@ -3,15 +3,13 @@
 <h1 class>Hotel</h1>
 
 <nav class="nav justify-content-center mb-4">
-  <a
-    class="nav-link" [routerLink]="''" [ngClass]="{ 'active': page === 'home' }">Home</a>
+  <a class="nav-link" [routerLink]="'/Home'" [routerLinkActive]="'active'">Home</a>
 
-  <a
-    class="nav-link" [routerLink]="'/Calendario'" [ngClass]="{ 'active': page === 'calendario' }">Calendario</a>
+  <a class="nav-link" [routerLink]="'/Calendario'" [routerLinkActive]="'active'">Calendario</a>
 
-  <a
-    class="nav-link" [routerLink]="'/Habitaciones'" [ngClass]="{ 'active': page === 'habitaciones' }">Habitaciones</a>
+  <a class="nav-link" [routerLink]="'/AgregarReserva'" [routerLinkActive]="'active'">Agregar Reserva</a>
 
-  <a
-    class="nav-link"[routerLink]="'/Reseñas'"[ngClass]="{ 'active': page === 'reseñas' }">Reseñas</a>
+  <a class="nav-link" [routerLink]="'/Habitaciones'" [routerLinkActive]="'active'">Habitaciones</a>
+
+  <a class="nav-link"[routerLink]="'/Reseñas'" [routerLinkActive]="'active'">Reseñas</a>
 </nav>
