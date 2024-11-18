@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Reserva } from '../models/reserva.model';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
@@ -20,7 +21,7 @@ export class CalendarioComponent implements OnInit{
   habitaciones: number[] = [101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304,305];
   listaReserva: Reserva[]= [];
 
-  constructor(private _backservice: ApiService) {
+  constructor(private _backservice: ApiService, private _router: Router) {
     // Establecer la fecha actual como la fecha predeterminada
     const today = new Date();
     this.currentDate = today.toISOString().split('T')[0]; // Solo la parte de la fecha (YYYY-MM-DD)
@@ -59,5 +60,14 @@ export class CalendarioComponent implements OnInit{
     const current = new Date(this.currentDate);
     current.setDate(current.getDate() + direction); // Retroceder o avanzar un día
     this.currentDate = current.toISOString().split('T')[0]; // Actualizar la fecha
+  }
+
+  roomLink(roomNumber: number) {
+    if (this.isRoomOccupied(roomNumber)) {
+      // abrir popup para eliminar
+      
+    } else {
+      this._router.navigate(['/AgregarReserva']);
+    }
   }
 }
