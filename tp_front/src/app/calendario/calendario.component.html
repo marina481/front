@@ -13,7 +13,7 @@
  <!-- Disponibilidad de habitaciones-->
   <div class="rooms-grid">
        <div *ngFor="let roomNumber of habitaciones"
-          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
+          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}" (click)="roomLink(roomNumber)">
           {{ roomNumber }}
        </div>
    </div>
