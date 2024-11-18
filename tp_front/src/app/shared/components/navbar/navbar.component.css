@@ -15,3 +15,12 @@
     color: #004d66 !important;
     font-weight: bold;
   }
+
+/* Título */
+h1{
+  color: #17969bb2; /* Azul oscuro */
+}
+h2{
+  color:#c98c08;
+  font-weight: bold
+}
