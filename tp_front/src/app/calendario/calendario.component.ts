@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { Reserva } from '../models/reserva.model';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [NavbarComponent,FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.css'
 })
@@ -23,7 +23,7 @@ export class CalendarioComponent implements OnInit{
   showModal: boolean = false;
   selectedRoomNumber: number | null = null;
 
-  constructor(private _backservice: ApiService) {
+  constructor(private _backservice: ApiService, private _router: Router) {
     // Establecer la fecha actual como la fecha predeterminada
     const today = new Date();
     this.currentDate = today.toISOString().split('T')[0]; // Solo la parte de la fecha (YYYY-MM-DD)
@@ -95,5 +95,17 @@ export class CalendarioComponent implements OnInit{
   
   cancelDelete(): void {
     this.showModal = false;
+  }
+  
+  async roomLink(roomNumber: number) {
+    
+    const Room = await this.isRoomOccupied(roomNumber)
+    
+    if (Room) {
+      this.openModal(roomNumber)
+
+    } else {
+      this._router.navigate(['/AgregarReserva']);
+    }
   }
 }

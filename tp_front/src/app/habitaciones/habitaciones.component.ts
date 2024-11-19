@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../shared/components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +13,7 @@ interface IHabitacion {
 @Component({
   selector: 'app-habitaciones',
   standalone: true,
-  imports: [NavbarComponent, FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './habitaciones.component.html',
   styleUrls: ['./habitaciones.component.css']
 })
