@@ -19,4 +19,8 @@ export class ApiService {
   public agregarReserva(reserva: Reserva): Observable <Reserva> {
     return this._http.post<Reserva>(this.apiURL, reserva);
   }
+
+  public eliminarReserva(id:number):Observable<Reserva> {
+    return this._http.delete<Reserva>(this.apiURL + '/' + id);
+  }
 }

@@ -13,8 +13,19 @@
  <!-- Disponibilidad de habitaciones-->
   <div class="rooms-grid">
        <div *ngFor="let roomNumber of habitaciones"
-          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}">
+          [ngClass]="{'room': true, 'occupied': isRoomOccupied(roomNumber)}"
+          (click)="isRoomOccupied(roomNumber) && openModal(roomNumber)">
           {{ roomNumber }}
        </div>
    </div>
+
+   <!--Modal de confirmación-->
+  <div *ngIf="showModal" class="modal-backdrop">
+     <div class="modal-content">
+       <p>¿Seguro que quiere eliminar esta reserva?</p>
+       <button (click)="confirmDelete()">Confirmar</button>
+       <button (click)="cancelDelete()">Cancelar</button>
+     </div>
+  </div>
 </div>
+

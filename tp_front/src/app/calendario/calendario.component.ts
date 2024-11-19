@@ -20,6 +20,9 @@ export class CalendarioComponent implements OnInit{
   habitaciones: number[] = [101, 102, 103, 104, 105, 201, 202, 203, 204, 205, 301, 302, 303, 304,305];
   listaReserva: Reserva[]= [];
 
+  showModal: boolean = false;
+  selectedRoomNumber: number | null = null;
+
   constructor(private _backservice: ApiService) {
     // Establecer la fecha actual como la fecha predeterminada
     const today = new Date();
@@ -59,5 +62,38 @@ export class CalendarioComponent implements OnInit{
     const current = new Date(this.currentDate);
     current.setDate(current.getDate() + direction); // Retroceder o avanzar un día
     this.currentDate = current.toISOString().split('T')[0]; // Actualizar la fecha
+  }
+
+  //Funciones del Modal de confirmación
+  openModal(roomNumber: number): void {
+    this.selectedRoomNumber = roomNumber;
+    this.showModal = true;
+  }
+  
+  confirmDelete(): void {
+    const reservaBuscada = this.listaReserva.find(
+      (reserva) => 
+        reserva.HABITACION === this.selectedRoomNumber &&
+        new Date(this.currentDate) >= new Date(reserva.FECHA_INICIO) &&
+        new Date(this.currentDate) <= new Date(reserva.FECHA_FIN)
+    );
+    if (reservaBuscada) {
+      this._backservice.eliminarReserva(reservaBuscada.ID).subscribe(() => {
+      console.log(`La reserva ${reservaBuscada.ID} fue eliminada con exito`)
+      console.log(`Reserva de la habitación ${this.selectedRoomNumber} eliminada.`);
+      },
+      (error) => {
+        console.error(`Error al Eliminar la reserva: ${error}`);
+      });
+    }
+    else{
+      console.log("No hay reserva para eliminar")
+    }
+    this.showModal = false;
+    this.selectedRoomNumber = null;
+  }
+  
+  cancelDelete(): void {
+    this.showModal = false;
   }
 }
