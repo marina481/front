@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-#form-reserva {
+/*#form-reserva {
     display: grid;
     width: 80%;
     grid-template-columns: 40% 60%;
@@ -110,9 +110,14 @@
     height: 2em;
     font-size: 1.5em;
 }
+*/
 
 .validators {
     color: red;
     font-size: 0.8em;
     margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem /* No tomaba el estilo de bootstrap */
 }

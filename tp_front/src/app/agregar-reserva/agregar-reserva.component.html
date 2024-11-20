@@ -1,82 +1,111 @@
 <form [formGroup]="reservaForm">
     <div id="form-reserva">
-
-        <label id="label-nombre" for="input-nombre">Nombre:</label>
-        <input
-        id="input-nombre"
-        formControlName="nombre"
-        type="text"
-        label="Nombre">
-
-        @if(reservaForm.controls.nombre.errors && reservaForm.controls.nombre.touched) {
-            <p id="error-nombre" class="validators">El nombre es requerido</p>
-        }
-
-        <label id="label-telefono" for="input-telefono">Teléfono:</label>
-        <input
-        id="input-telefono"
-        formControlName="telefono"
-        type="number"
-        min="0"
-        step="1"
-        label="Teléfono">
-
-        @if(reservaForm.controls.telefono.errors && reservaForm.controls.telefono.touched) {
-            <p id="error-telefono" class="validators">El teléfono es requerido</p>
-        }
-
-        <label id="label-email" for="input-email">Email:</label>
-        <input
-        id="input-email"
-        formControlName="email"
-        type="email"
-        label="Email">
-
-        @if(reservaForm.controls.email.errors && reservaForm.controls.email.touched) {
-            <p id="error-email" class="validators">El email es incorrecto</p>
-        }
-
-        <label id="label-habitacion" for="input-habitacion">Habitación:</label>
-        <input
-        id="input-habitacion"
-        formControlName="habitacion"
-        type="number"
-        min="0"
-        step="1"
-        label="Habitación">
-
-        @if(reservaForm.controls.habitacion.errors && reservaForm.controls.habitacion.touched) {
-            <p id="error-habitacion" class="validators">La habitación es requerida</p>
-        }
-
-        <label id="label-fecha_inicio" for="input-fecha_inicio">Fecha de inicio:</label>
-        <input
-        id="input-fecha_inicio"
-        formControlName="fecha_inicio"
-        type="date"
-        label="Fecha de inicio">
-
-        @if(reservaForm.controls.fecha_inicio.errors && reservaForm.controls.fecha_inicio.touched) {
-            <p id="error-fecha_inicio" class="validators">La fecha de inicio es requerida</p>
-        }
-
-        <label id="label-fecha_fin" for="input-fecha_fin">Fecha de fin:</label>
-        <input
-        id="input-fecha_fin"
-        formControlName="fecha_fin"
-        type="date"
-        label="Fecha de fin">
-
-        @if(reservaForm.controls.fecha_fin.errors && reservaForm.controls.fecha_fin.touched) {
-            <p id="error-fecha_fin" class="validators">La fecha de fin es requerida</p>
-        }
-
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-nombre" for="input-nombre">Nombre:</label>
+            <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-nombre"
+                formControlName="nombre"
+                type="text"
+                label="Nombre">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.nombre.errors && reservaForm.controls.nombre.touched) {
+                <p id="error-nombre" class="validators">El nombre es requerido</p>
+            }
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-telefono" for="input-telefono">Teléfono:</label>
+            <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-telefono"
+                formControlName="telefono"
+                type="number"
+                min="0"
+                step="1"
+                label="Teléfono">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.telefono.errors && reservaForm.controls.telefono.touched) {
+                <p id="error-telefono" class="validators">El teléfono es requerido</p>
+            }
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-email" for="input-email">Email:</label>
+            <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-email"
+                formControlName="email"
+                type="email"
+                label="Email">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.email.errors && reservaForm.controls.email.touched) {
+                <p id="error-email" class="validators">El email es incorrecto</p>
+            }
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-habitacion" for="input-habitacion">Habitación:</label>
+            <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-habitacion"
+                formControlName="habitacion"
+                type="number"
+                min="0"
+                step="1"
+                label="Habitación">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.habitacion.errors && reservaForm.controls.habitacion.touched) {
+                <p id="error-habitacion" class="validators">La habitación es requerida</p>
+            }
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-fecha_inicio" for="input-fecha_inicio">Fecha de inicio:</label>
+                <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-fecha_inicio"
+                formControlName="fecha_inicio"
+                type="date"
+                label="Fecha de inicio">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.fecha_inicio.errors && reservaForm.controls.fecha_inicio.touched) {
+                <p id="error-fecha_inicio" class="validators">La fecha de inicio es requerida</p>
+            }
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="label-fecha_fin" for="input-fecha_fin">Fecha de fin:</label>
+            <div class="col-sm-10">
+                <input
+                class="form-control"
+                id="input-fecha_fin"
+                formControlName="fecha_fin"
+                type="date"
+                label="Fecha de fin">
+            </div>
+        </div>
+        <div class="form-group row">
+            @if(reservaForm.controls.fecha_fin.errors && reservaForm.controls.fecha_fin.touched) {
+                <p id="error-fecha_fin" class="validators">La fecha de fin es requerida</p>
+            }
+        </div>
+        <div class="form-group col-sm-12 row" id="form-buttons">
+            <div class="col-sm-1"></div>
+            <input class="btn btn-secondary col-sm-4 btn-lg" type="button" value="Volver" (click)="volver()">
+            <div class="col-sm-2"></div>
+            <input class="btn btn-success col-sm-4 btn-lg" type="button" value="Agregar reserva" (click)="enviarReserva()">
+            <div class="col-sm-1"></div>
+        </div>
     </div>
-
-    <div id="form-buttons">
-        <input type="button" value="Volver" (click)="volver()">
-
-        <input type="button" value="Agregar reserva" (click)="enviarReserva()">
-    </div>
-
 </form>
