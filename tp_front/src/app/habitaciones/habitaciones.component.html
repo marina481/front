@@ -1,75 +1,133 @@
 <div class="container text-center my-4">
-  
-
-  <!-- Cards de las habitaciones con carrusel -->
-  <div class="row">
+  <div
+    class="row g-4 d-flex flex-row justify-content-evenly align-items-center"
+  >
     <!-- Mostramos habitaciones sólo si hay alguna agregada -->
-    <div *ngIf="bedrooms.length === 0">
-      <p>No hay habitaciones cargadas. Agrega una nueva.</p>
+    <div>
+      <div
+        class="container d-flex flex-row justify-content-center"
+        *ngIf="habitaciones.length === 0"
+      >
+        <p>No hay habitaciones cargadas. Agrega una nueva.</p>
+      </div>
     </div>
-
-    <!-- Usamos un *ngFor para mostrar las habitaciones que se agregan -->
-    <div *ngFor="let room of bedrooms" class="col-12 col-md-4">
-      <div class="card" style="width: 18rem;">
-        <div id="carousel{{ room.title }}" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div *ngFor="let img of room.images; let i = index" class="carousel-item" [class.active]="i === 0">
-              <img [src]="img" class="d-block w-100" [alt]="room.title + ' ' + (i + 1)">
-            </div>
+    <div
+      class="col mx-auto d-flex flex-wrap flex-row justify-content-center align-items-center"
+    >
+      <div
+        class="card me-2 my-2"
+        *ngFor="let habitacion of habitaciones; let i = index"
+      >
+        <div class="card-content">
+          <div class="card-header m-0 p-0">
+            <img
+              [src]="habitacion.IMAGEUPLOAD"
+              class="card-img-top"
+              [alt]="habitacion.TITLE"
+            />
           </div>
-          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carousel' + room.title" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carousel' + room.title" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ room.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Precio ${{ room.price }}</h6>
-          <p class="card-text">{{ room.description }}</p>
+          <div class="card-footer m-0 p-0">
+            <h5 class="card-title">{{ habitacion.TITLE }}</h5>
+            <p class="card-text">
+              {{ habitacion.DESCRIPTION }}
+            </p>
+            <p class="card-text">
+              {{ habitacion.PRICE | currency : "ARS" }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Botón para agregar habitación -->
-  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addRoomModal">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    data-bs-toggle="modal"
+    data-bs-target="#addRoomModal"
+  >
     Agregar Habitación
   </button>
 
   <!-- Modal para agregar habitación -->
-  <div class="modal fade" id="addRoomModal" tabindex="-1" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="addRoomModal"
+    tabindex="-1"
+    aria-labelledby="addRoomModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Agregar Habitación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
 
         <div class="modal-body">
           <!-- Formulario para agregar los datos de la habitación -->
-          <form id="addRoomForm" (ngSubmit)="agregarHabitacion()">
+          <form
+            #form="ngForm"
+            id="addRoomForm"
+            (ngSubmit)="agregarHabitacion(form)"
+          >
             <div class="mb-3">
               <label for="roomTitle" class="form-label">Habitación</label>
-              <input type="text" class="form-control" [(ngModel)]="newRoom.title" name="roomTitle" id="roomTitle" placeholder="Ingrese Categoría" required>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="newRoom.TITLE"
+                name="roomTitle"
+                id="roomTitle"
+                placeholder="Ingrese Categoría"
+              />
             </div>
 
             <div class="mb-3">
               <label for="price" class="form-label">Precio</label>
-              <input type="number" class="form-control" [(ngModel)]="newRoom.price" name="price" id="price" placeholder="Ingrese monto en pesos argentinos" required min="1">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="newRoom.PRICE"
+                name="price"
+                id="price"
+                placeholder="Ingrese monto en pesos argentinos"
+                min="1"
+              />
             </div>
 
             <div class="mb-3">
-              <label for="description" class="form-label">Especificaciones</label>
-              <input type="text" class="form-control" [(ngModel)]="newRoom.description" name="description" id="description" placeholder="Ingrese los detalles" required>
+              <label for="description" class="form-label"
+                >Especificaciones</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="newRoom.DESCRIPTION"
+                name="description"
+                id="description"
+                placeholder="Ingrese los detalles"
+              />
             </div>
 
             <div class="mb-3">
-              <label for="imageUpload" class="form-label">Seleccionar fotos</label>
-              <input type="file" class="form-control" id="imageUpload" (change)="onFileChange($event)" accept="image/*" multiple>
+              <label for="imageUpload" class="form-label"
+                >Url de la imagen</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="newRoom.IMAGEUPLOAD"
+                name="imageupload"
+                id="imageUpload"
+                pattern="https?://.*"
+              />
             </div>
 
             <div class="modal-footer">
