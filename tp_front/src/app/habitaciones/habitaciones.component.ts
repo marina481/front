@@ -1,59 +1,87 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
-interface IHabitacion {
-  title: string;
-  price: number;
-  description: string;
-  images: string[];
-}
+import { IHabitacion } from '../models/habitacion.models';
+import { HabitacionService } from '../services/habitacion.service';
 
 @Component({
   selector: 'app-habitaciones',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './habitaciones.component.html',
-  styleUrls: ['./habitaciones.component.css']
+  styleUrls: ['./habitaciones.component.css'],
 })
+export class HabitacionesComponent implements OnInit {
+  habitaciones: IHabitacion[] = [];
+  // bedrooms = [
+  //   {
+  //     title: 'Habitación 1',
+  //     price: 100,
+  //     description: 'Habitación con cama matrimonial',
+  //     imageUpload: 'https://i.ibb.co/w4CYTDp/105031814.webp',
+  //   },
+  //   {
+  //     title: 'Habitación 2',
+  //     price: 150,
+  //     description: 'Habitación con cama matrimonial y jacuzzi',
+  //     imageUpload: 'https://i.ibb.co/w4CYTDp/105031814.webp',
+  //   },
+  // ];
+  constructor(
+    private habitacionService: HabitacionService) {}
 
-export class HabitacionesComponent {
-  // Array para almacenar las habitaciones
-  bedrooms: IHabitacion[] = [];
+  ngOnInit() {
+    this.obtenerHabitaciones();
+  }
 
   // Objeto para capturar la nueva habitación
   newRoom: IHabitacion = {
-    title: '',
-    price: 0,
-    description: '',
-    images: [] as string[]
+    TITLE: '',
+    PRICE: 0,
+    DESCRIPTION: '',
+    IMAGEUPLOAD: '',
   };
 
+  obtenerHabitaciones() {
+    this.habitacionService.getHabitaciones().subscribe(
+      (res: any) => {
+        this.habitaciones = res;
+        //console.log(this.habitaciones);
+      },
+      (err) => {
+        console.error('Error al obtener las habitaciones', err);
+      }
+    )   
+  }
+
   // Método para agregar una nueva habitación
-  agregarHabitacion() {
-    // Validación para asegurarse de que todos los campos estén completos
-    if (this.newRoom.title && this.newRoom.price > 0 && this.newRoom.description && this.newRoom.images.length > 0) {
-      // Usamos spread operator para hacer una copia del objeto antes de agregarlo
-      this.bedrooms.push({ ...this.newRoom });  // Se hace una copia para evitar efectos secundarios
-      this.limpiarFormulario();  // Limpiar el formulario después de agregar
-      alert('Habitación agregada exitosamente');
-    } else {
-      alert('Debe ingresar todos los datos correctamente');
+  agregarHabitacion(form: NgForm) {
+    if (form.invalid) {
+      console.log('Formulario inválido');
+      return;
     }
+
+    const newRoom: any = {
+      title: this.newRoom.TITLE,
+      price: this.newRoom.PRICE,
+      description: this.newRoom.DESCRIPTION,
+      imageUpload: this.newRoom.IMAGEUPLOAD,
+    };
+
+    this.habitacionService.agregarHabitacion(newRoom).subscribe(
+      (res: IHabitacion) => {
+        try {
+          this.habitaciones.push(res);
+          //console.log('Resultado', res);
+          //console.log('Habitaciones', this.habitaciones);
+          form.resetForm();
+          window.location.reload();
+        } catch (error) {
+          console.log('Error al agregar la habitación', error);
+        }
+      }
+      
+    );
   }
 
-  // Método para limpiar el formulario
-  limpiarFormulario() {
-    this.newRoom = { title: '', price: 0, description: '', images: [] };  // Reiniciar el objeto de la habitación
-  }
-
-  // Método para manejar el cambio de imagen
-  onFileChange(event: any) {
-    const input = event.target as HTMLInputElement;
-    if (input.files) {
-      const files = Array.from(input.files);  // Convertir FileList a array
-      this.newRoom.images = files.map(file => URL.createObjectURL(file));  // Crear URLs para las imágenes seleccionadas
-    }
-  }
 }
